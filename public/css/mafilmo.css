@@ -1421,20 +1421,38 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-  }
-  .poster-wrap {
-    width: 140px;
-  }
-  .hero-title {
-    font-size: 24px;
-  }
   .backdrop-wrap {
-    height: 280px;
+    height: auto;          /* laisse le contenu piloter la hauteur */
+    min-height: 160px;     /* garantit que le backdrop est visible */
   }
   .backdrop {
-    height: 280px;
+    height: 100%;          /* couvre tout le conteneur */
+    position: absolute;    /* reste en fond */
+  }
+  .hero {
+    position: relative;    /* sort du flux absolu — ne remonte plus */
+    flex-direction: column;
+    align-items: center;   /* poster centré sur mobile */
+    padding: 20px 16px 24px;
+    gap: 16px;
+  }
+  .poster-wrap {
+    width: 120px;
+    flex-shrink: 0;
+  }
+  .hero-info {
+    text-align: center;
+    padding-bottom: 0;
+  }
+  .hero-title {
+    font-size: 22px;
+  }
+  .hero-meta {
+    justify-content: center;
+    gap: 10px;
+  }
+  .genre-tags {
+    justify-content: center;
   }
 }
 
