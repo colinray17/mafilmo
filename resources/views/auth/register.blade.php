@@ -74,8 +74,10 @@
                 name="password"
                 class="form-control @error('password') is-invalid @enderror"
                 placeholder="••••••••"
-                autocomplete="new-password"
-            >
+                autocomplete="new-password">
+            <span class="password-hint">
+                Minimum 8 caractères, une majuscule, un chiffre et un caractère spécial
+            </span>
             @error('password')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror

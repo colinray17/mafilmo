@@ -44,6 +44,15 @@ class ProfileController extends Controller
         $request->validate([
             'current_password' => ['required', 'current_password'],
             'password'         => ['required', 'confirmed', Password::defaults()],
+        ], [
+            'current_password.required'          => 'Le mot de passe actuel est obligatoire.',
+            'current_password.current_password'  => 'Le mot de passe actuel est incorrect.',
+            'password.required'                  => 'Le nouveau mot de passe est obligatoire.',
+            'password.confirmed'                 => 'Les deux mots de passe ne correspondent pas.',
+            'password.min'                       => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'password.mixed'                     => 'Le mot de passe doit contenir au moins une majuscule et une minuscule.',
+            'password.numbers'                   => 'Le mot de passe doit contenir au moins un chiffre.',
+            'password.symbols'                   => 'Le mot de passe doit contenir au moins un caractère spécial.',
         ]);
 
         Auth::user()->update([

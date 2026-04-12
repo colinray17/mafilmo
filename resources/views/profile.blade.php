@@ -83,7 +83,9 @@
                 <input type="password" id="password" name="password"
                        class="{{ $errors->has('password') ? 'is-invalid' : '' }}"
                        placeholder="••••••••">
-                <span class="password-hint">Minimum 8 caractères</span>
+                <span class="password-hint">
+                    Minimum 8 caractères, une majuscule, un chiffre et un caractère spécial
+                </span>
                 @error('password')
                     <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
