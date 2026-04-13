@@ -120,7 +120,8 @@ function addMovie(event, tmdbId, status) {
                     btn.disabled = false;
                     btn.style.opacity = "1";
                 }, 2000);
-                showFlashMessage(data.message || "Film ajouté !", "success");
+                const icon = status === "seen" ? "✅" : "📌";;
+                showFlashMessage(data.message || "Film ajouté !", "success", icon);
             }
         })
         .catch(() => {
@@ -196,14 +197,24 @@ function initDeleteConfirm() {
 
 // MESSAGES FLASH DYNAMIQUES
 
-function showFlashMessage(message, type = "success") {
+function showFlashMessage(message, type = "success", customIcon = null) {
     const existing = document.getElementById("flash-dynamic");
     if (existing) existing.remove();
 
     const bg     = type === "success" ? "#D1FAE5" : type === "info" ? "#DBEAFE" : "#FEE2E2";
     const border = type === "success" ? "#6EE7B7" : type === "info" ? "#93C5FD" : "#FCA5A5";
     const color  = type === "success" ? "#065F46" : type === "info" ? "#1E40AF" : "#991B1B";
-    const icon   = type === "success" ? "✅"      : type === "info" ? "ℹ️"      : "❌";
+
+    let icon;
+    if (customIcon !== null) {
+        icon = customIcon;
+    } else if (type === "success") {
+        icon = "✅";
+    } else if (type === "info") {
+        icon = "ℹ️";
+    } else {
+        icon = "❌";
+    }
 
     const flash = document.createElement("div");
     flash.id = "flash-dynamic";

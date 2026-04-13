@@ -35,7 +35,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return back()->with('success_profile', 'Profil mis à jour ✅');
+        return back()->with('success_profile', 'Profil mis à jour');
     }
 
     // Mettre à jour le mot de passe
@@ -59,6 +59,6 @@ class ProfileController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return back()->with('success_password', 'Mot de passe mis à jour ✅');
+        return back()->with('success_password', 'Mot de passe mis à jour');
     }
 }

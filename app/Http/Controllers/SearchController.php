@@ -72,8 +72,8 @@ class SearchController extends Controller
         ]);
 
         $message = $request->status === 'seen'
-            ? "'{$movie->title}' ajouté à vos films vus ✅"
-            : "'{$movie->title}' ajouté à votre liste à voir 📌";
+            ? "'{$movie->title}' ajouté à vos films vus"
+            : "'{$movie->title}' ajouté à votre liste à voir";
 
         if ($request->ajax()) {
             return response()->json(['message' => $message]);

@@ -63,7 +63,7 @@ class ListController extends Controller
     public function remove(Movie $movie)
     {
         Auth::user()->movies()->detach($movie->id);
-        return back()->with('success', "'{$movie->title}' supprimé de vos listes ✅");
+        return back()->with('success', "'{$movie->title}' supprimé de vos listes");
     }
 
     // Déplacer un film (vu ↔ à voir)
@@ -82,8 +82,8 @@ class ListController extends Controller
         ]);
 
         $message = $newStatus === 'seen'
-            ? "'{$movie->title}' déplacé vers Films vus ✅"
-            : "'{$movie->title}' déplacé vers Liste à voir 📌";
+            ? "'{$movie->title}' déplacé vers Films vus"
+            : "'{$movie->title}' déplacé vers Liste à voir";
 
         return back()->with('success', $message);
     }
@@ -99,7 +99,7 @@ class ListController extends Controller
             'rating' => $request->rating
         ]);
 
-        return back()->with('success', "Note enregistrée ✅");
+        return back()->with('success', "Note enregistrée");
     }
 
     // Commenter un film
@@ -113,6 +113,6 @@ class ListController extends Controller
             'comment' => $request->comment
         ]);
 
-        return back()->with('success', 'Commentaire enregistré ✅');
+        return back()->with('success', 'Commentaire enregistré');
     }
 }

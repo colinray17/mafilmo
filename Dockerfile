@@ -21,7 +21,8 @@ RUN npm ci && npm run build
 
 # Permissions
 RUN mkdir -p storage/framework/{sessions,views,cache,testing} storage/logs bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache 
+    && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8000
 CMD php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+

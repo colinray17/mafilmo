@@ -3,3 +3,4 @@ builder = "nixpacks"
 
 [build.nixpacksPlan.phases.setup]
 nixPkgs = ["php84", "php84Packages.composer"]
+
