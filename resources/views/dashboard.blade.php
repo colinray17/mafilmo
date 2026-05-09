@@ -111,74 +111,46 @@
 
 
 {{-- Modal Genres --}}
-<div id="genre-modal" style="display:none; position:fixed; inset:0;
-    background:rgba(0,0,0,0.5); z-index:9999;
-    align-items:center; justify-content:center; backdrop-filter:blur(4px);"
+<div id="genre-modal" class="modal-overlay"
     onclick="if(event.target===this) closeModal('genre-modal')">
-    <div style="background:white; border-radius:20px; padding:36px;
-        max-width:440px; width:90%; box-shadow:0 25px 50px rgba(0,0,0,0.3);">
-        <h3 style="font-family:'Poppins',sans-serif; font-size:20px;
-            font-weight:700; color:#1F2937; margin-bottom:24px;">
-            🎭 Mes genres préférés
-        </h3>
+    <div class="modal-content">
+        <h3 class="modal-title">🎭 Mes genres préférés</h3>
         @forelse($genreStats as $stat)
-            <div style="margin-bottom:16px;">
-                <div style="display:flex; justify-content:space-between;
-                    font-size:14px; font-weight:600; color:#374151; margin-bottom:6px;">
+            <div class="modal-stat-item">
+                <div class="modal-stat-row">
                     <span>{{ $stat['genre'] }}</span>
-                    <span>{{ $stat['count'] }} film{{ $stat['count'] > 1 ? 's' : '' }}
+                    <span>{{ $stat['count'] }} film{{ $stat['count'] > 1 ? 's' : '' }}</span>
                 </div>
-                <div style="background:#E5E7EB; border-radius:999px; height:8px;">
-                    <div style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);
-                        height:8px; border-radius:999px; width:{{ $stat['percent'] }}%;
-                        transition:width 0.5s ease;"></div>
+                <div class="modal-bar-track">
+                    <div class="modal-bar-genre" style="width:{{ $stat['percent'] }}%;"></div>
                 </div>
             </div>
         @empty
-            <p style="color:#6B7280;">Aucun genre enregistré pour l'instant.</p>
+            <p class="modal-empty">Aucun genre enregistré pour l'instant.</p>
         @endforelse
-        <button onclick="closeModal('genre-modal')"
-            style="margin-top:24px; width:100%; padding:12px; border:none;
-                border-radius:10px; background:#F3F4F6; color:#374151;
-                font-weight:700; cursor:pointer; font-size:15px;">
-            Fermer
-        </button>
+        <button onclick="closeModal('genre-modal')" class="modal-close-btn">Fermer</button>
     </div>
 </div>
 
 {{-- Modal Notes --}}
-<div id="rating-modal" style="display:none; position:fixed; inset:0;
-    background:rgba(0,0,0,0.5); z-index:9999;
-    align-items:center; justify-content:center; backdrop-filter:blur(4px);"
+<div id="rating-modal" class="modal-overlay"
     onclick="if(event.target===this) closeModal('rating-modal')">
-    <div style="background:white; border-radius:20px; padding:36px;
-        max-width:440px; width:90%; box-shadow:0 25px 50px rgba(0,0,0,0.3);">
-        <h3 style="font-family:'Poppins',sans-serif; font-size:20px;
-            font-weight:700; color:#1F2937; margin-bottom:24px;">
-            ⭐ Répartition de mes notes
-        </h3>
+    <div class="modal-content">
+        <h3 class="modal-title">⭐ Répartition de mes notes</h3>
         @foreach(array_reverse($ratingStats, true) as $stars => $count)
-            <div style="margin-bottom:16px;">
-                <div style="display:flex; justify-content:space-between;
-                    font-size:14px; font-weight:600; color:#374151; margin-bottom:6px;">
+            <div class="modal-stat-item">
+                <div class="modal-stat-row">
                     <span>{{ str_repeat('★', $stars) }}{{ str_repeat('☆', 5 - $stars) }}</span>
                     <span>{{ $count }} film{{ $count > 1 ? 's' : '' }}</span>
                 </div>
-                <div style="background:#E5E7EB; border-radius:999px; height:8px;">
+                <div class="modal-bar-track">
                     @php $maxCount = max($ratingStats) ?: 1; @endphp
-                    <div style="background:linear-gradient(135deg,#10B981,#059669);
-                        height:8px; border-radius:999px;
-                        width:{{ $count > 0 ? round(($count / $maxCount) * 100) : 0 }}%;
-                        transition:width 0.5s ease;"></div>
+                    <div class="modal-bar-rating"
+                        style="width:{{ $count > 0 ? round(($count / $maxCount) * 100) : 0 }}%;"></div>
                 </div>
             </div>
         @endforeach
-        <button onclick="closeModal('rating-modal')"
-            style="margin-top:24px; width:100%; padding:12px; border:none;
-                border-radius:10px; background:#F3F4F6; color:#374151;
-                font-weight:700; cursor:pointer; font-size:15px;">
-            Fermer
-        </button>
+        <button onclick="closeModal('rating-modal')" class="modal-close-btn">Fermer</button>
     </div>
 </div>
 

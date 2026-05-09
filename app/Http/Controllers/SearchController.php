@@ -88,16 +88,16 @@ class SearchController extends Controller
     }
 
     // Recherche AJAX
-    public function ajax(Request $request)
-    {
-        $query = $request->get('q', '');
+    //public function ajax(Request $request)
+    //{
+      //  $query = $request->get('q', '');
 
-        if (strlen($query) < 2) {
-            return response()->json(['results' => []]);
-        }
+        //if (strlen($query) < 2) {
+          //  return response()->json(['results' => []]);
+        //}
 
-        $results = $this->tmdb->searchMovies($query);
+        //$results = $this->tmdb->searchMovies($query);
 
-        return response()->json(['results' => $results]);
-    }
+        //return response()->json(['results' => $results]);
+    //}
 }

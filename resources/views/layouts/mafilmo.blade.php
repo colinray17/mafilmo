@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaFilmo — {{ $title ?? 'Votre journal de cinéma' }}</title>
+    <title>MaFilmo — @yield('title', 'Votre journal de cinéma')</title>
 
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,19 +18,15 @@
     {{-- Token CSRF pour les requêtes AJAX --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Styles spécifiques à la page --}}
-    @stack('styles')
 </head>
 <body class="@yield('body-class', 'page-bg')">
 
     {{-- Contenu de la page --}}
     @yield('content')
 
-    {{-- Scripts spécifiques à la page --}}
-    @stack('scripts')
-
     {{-- JS Global MaFilmo --}}
     <script src="{{ asset('js/mafilmo.js') }}" defer></script>
 
 </body>
 </html>
+
