@@ -39,10 +39,10 @@
 
     {{-- Messages --}}
     @if(session('success'))
-        <div class="alert-success">{{ session('success') }}</div>
+        <div class="alert-success-custom">{{ session('success') }}</div>
     @endif
     @if(session('error'))
-        <div class="alert-error">{{ session('error') }}</div>
+        <div class="alert-error-custom">{{ session('error') }}</div>
     @endif
 
     {{-- Compteur de résultats --}}

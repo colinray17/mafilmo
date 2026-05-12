@@ -74,7 +74,7 @@ function renderMovieGrid(movies) {
                     </div>
                 </a>
                 <div class="movie-actions mt-2 movie-actions-card">
-                    <button onclick="window.location.href='/movies/tmdb/${movie.tmdb_id}?back=' + encodeURIComponent(window.location.href.split('?')[0] + '?q=' + encodeURIComponent(document.getElementById('search-input').value))"
+                    <button onclick="window.location.href='/movies/tmdb/${movie.tmdb_id}?back=${backUrl}'"
                         class="btn-action btn-detail">🔍 Détails</button>
                     <button onclick="addMovie(event, ${movie.tmdb_id}, 'seen')"
                         class="btn-action btn-seen">✅ Vu</button>
@@ -106,7 +106,10 @@ function addMovie(event, tmdbId, status) {
         body: formData,
         headers: { "X-Requested-With": "XMLHttpRequest" },
     })
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) throw new Error("Erreur réseau");
+            return response.json();
+        })
         .then((data) => {
             if (data.already_exists) {
                 btn.innerHTML = originalText;
@@ -120,7 +123,7 @@ function addMovie(event, tmdbId, status) {
                     btn.disabled = false;
                     btn.style.opacity = "1";
                 }, 2000);
-                const icon = status === "seen" ? "✅" : "📌";;
+                const icon = status === "seen" ? "✅" : "📌";
                 showFlashMessage(data.message || "Film ajouté !", "success", icon);
             }
         })
