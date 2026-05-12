@@ -427,6 +427,69 @@
 }
 
 /* --------------------------
+   MODALES DE CONFIRMATION DE SUPPRESSION (List/Details)
+   -------------------------- */
+
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-content {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.confirm-message {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 24px;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.confirm-btn-cancel {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #F3F4F6;
+    color: #374151;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.confirm-btn-delete {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    background: #EF4444;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* --------------------------
    PAGES AUTH (login / register)
    -------------------------- */
 

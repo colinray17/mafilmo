@@ -178,14 +178,14 @@ function initDeleteConfirm() {
             e.preventDefault();
 
             const modal = document.createElement("div");
-            modal.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;";
+            modal.className = "confirm-overlay";
             modal.innerHTML = `
-                <div style="background:white;border-radius:16px;padding:32px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.2);">
-                    <div style="font-size:48px;margin-bottom:12px;">🗑️</div>
-                    <p style="font-size:16px;font-weight:600;color:#1F2937;margin-bottom:24px;">Supprimer ce film de votre liste ?</p>
-                    <div style="display:flex;gap:10px;justify-content:center;">
-                        <button id="modal-cancel" style="padding:10px 24px;border-radius:8px;border:none;background:#F3F4F6;color:#374151;font-weight:700;cursor:pointer;">Annuler</button>
-                        <button id="modal-confirm" style="padding:10px 24px;border-radius:8px;border:none;background:#EF4444;color:white;font-weight:700;cursor:pointer;">Supprimer</button>
+                <div class="confirm-content">
+                    <div class="confirm-icon">🗑️</div>
+                    <p class="confirm-message">Supprimer ce film de votre liste ?</p>
+                    <div class="confirm-actions">
+                        <button id="modal-cancel" class="confirm-btn-cancel">Annuler</button>
+                        <button id="modal-confirm" class="confirm-btn-delete">Supprimer</button>
                     </div>
                 </div>`;
 

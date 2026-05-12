@@ -111,8 +111,7 @@
 
 
 {{-- Modal Genres --}}
-<div id="genre-modal" class="modal-overlay"
-    onclick="if(event.target===this) closeModal('genre-modal')">
+<div id="genre-modal" class="modal-overlay">
     <div class="modal-content">
         <h3 class="modal-title">🎭 Mes genres préférés</h3>
         @forelse($genreStats as $stat)
@@ -133,8 +132,7 @@
 </div>
 
 {{-- Modal Notes --}}
-<div id="rating-modal" class="modal-overlay"
-    onclick="if(event.target===this) closeModal('rating-modal')">
+<div id="rating-modal" class="modal-overlay">
     <div class="modal-content">
         <h3 class="modal-title">⭐ Répartition de mes notes</h3>
         @foreach(array_reverse($ratingStats, true) as $stars => $count)
